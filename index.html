@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>신청 감사</title>
+  <style>
+    body { font-family: "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; line-height: 1.7; padding: 20px; background: transparent; text-align: center; }
+    #copyBtn { padding: 8px 14px; border: none; background: #4CAF50; color: white; border-radius: 4px; cursor: pointer; margin-bottom: 20px; }
+    #copyBtn:hover { background: #45a049; }
+    #content { background: #ffffff; border-radius: 16px; padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); max-width: 600px; margin: 0 auto 20px auto; text-align: left; }
+  </style>
+</head>
+<body>
+  <button id="copyBtn">📋 복사하기</button>
+
+  <div id="content">
+    <p>신청 감사드립니다! 🍀<br>
+    누락된 부분이 있다면 언제든 편하게 말씀 부탁드리며,<br>
+    신청서에 기재되지 않은 사항의 추가 수정은 별도 비용이 발생합니다.<br>
+    출처는 닉네임 또는 아이디(냐베 @NYABE1NAKO)로 남겨주시면 감사하겠습니다!</p>
+  </div>
+
+  <script>
+    document.getElementById("copyBtn").addEventListener("click", () => {
+      const range = document.createRange();
+      range.selectNode(document.getElementById("content"));
+      const selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+      try {
+        document.execCommand("copy");
+        alert("서식 포함 복사 완료! 🍀");
+      } catch (err) {
+        alert("복사에 실패했어요😭: " + err);
+      }
+      selection.removeAllRanges();
+    });
+  </script>
+</body>
+</html>

@@ -28,7 +28,14 @@
       selection.removeAllRanges();
       selection.addRange(range);
       try {
+         // 기본 복사 수행
         document.execCommand("copy");
+
+        // 복사된 텍스트 가져와 앞줄 공백 제거
+        const cleanedText = selection.toString().trimStart();
+
+        // Clipboard API로 덮어쓰기
+        await navigator.clipboard.writeText(cleanedText);
         alert("서식 포함 복사 완료! 🍀");
       } catch (err) {
         alert("복사에 실패했어요😭: " + err);
@@ -38,3 +45,4 @@
   </script>
 </body>
 </html>
+
